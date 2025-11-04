@@ -6,6 +6,6 @@ int main(){
   printf("Write the elements of matrix:\n");
   for(int i=0;i<n;i++)
     for(int j=0;j<n;j++)
-        scanf("%d",&mat[i][j]);
+      scanf("%d",&mat[i][j]);
   
 }
