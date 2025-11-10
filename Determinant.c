@@ -73,37 +73,43 @@ int main(){
     for(int j=0;j<n;j++)
       scanf("%f",&mat[i][j]);
   printf("\n\n");
-  
-  printf("Options:\n\n");
-  
-  printf("1.Find the determinant of matrix\n");
-  printf("2.Find the inverse of the following matrix:\n");
-  printf("3.Find the rank of the matrix function:\n");
-  printf("4.Terminate the program\n\n");
 
-  printf("Select the option:");
-  int opt;
-  scanf("%d",&opt);
+  while(k==0){ 
+    printf("Options:\n\n");
   
-  switch(opt){
-    case 1:
-           printf("The determinant of the matrix is %.2f\n",detr(mat,n));
-           break;
-    case 2:
-           printf("The inverse matrix of the above matrix is:\n");
-           inverse(mat,n);
-           break;
-    case 3:
-           printf("The rank of the matrix is %d\n");
-           ///Rank the matrix and put it here
-           break;
-    case 4:
-           printf("Terminated\n");
-           return 0;
-    default:
-           printf("Invalid option\n");
+    printf("1.Find the determinant of matrix\n");
+    printf("2.Find the inverse of the following matrix:\n");
+    printf("3.Find the rank of the matrix function:\n");
+    printf("4.Terminate the program\n\n");
+
+    printf("Select the option:");
+    int opt;
+    scanf("%d",&opt);
+  
+    switch(opt){
+      case 1:
+             printf("The determinant of the matrix is %.2f\n\n\n",detr(mat,n));
+             break;
+      case 2:
+             if(detr(mat,n) == 0){
+              printf("The determinant of the matrix is zero,hence not possible\n\n\n");
+             }else{
+             printf("The inverse matrix of the above matrix is:\n");
+             inverse(mat,n);
+             printf("\n\n\n");
+             }
+             break;
+      case 3:
+             printf("The rank of the matrix is %d\n\n\n");
+             ///Rank the matrix and put it here
+             break;
+      case 4:
+             printf("Terminated\n");
+             return 0;
+      default:
+           printf("Invalid option\n\n\n");
+    }
   }
-  
 
 
 }
