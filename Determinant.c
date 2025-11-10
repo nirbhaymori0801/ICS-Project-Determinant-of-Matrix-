@@ -49,7 +49,7 @@ int main(){
   
   printf("1.Find the determinant of matrix\n");
   printf("2.Find the inverse of the following matrix:\n");
-  printf("3.Find the rank of the matrix function:\n");
+  printf("3.Find the rank of the matrix function:\n\n");
 
   printf("Select the option:");
   int opt;
