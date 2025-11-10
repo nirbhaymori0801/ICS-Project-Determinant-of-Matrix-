@@ -31,7 +31,7 @@ int det(int mat[100][100],int n){
   return det;
 }
 
-void inverse(int mat[100][100],int n);//complete the function here
+void inverse(int mat[100][100],int n);
 
 int rank(int mat[100][100],int n);//complete the function here
 
