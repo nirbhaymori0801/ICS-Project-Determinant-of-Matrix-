@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, k;
+    printf("Enter the order of the matrix: ");
+    scanf("%d", &n);
+
+    float a[20][40];  
+
+    printf("Enter elements of the matrix:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%f", &a[i][j]);
+        }
+    }
+
+    for (i = 0; i < n; i++) {
+        for (j = n; j < 2 * n; j++) {
+            if (j == i + n)
+                a[i][j] = 1;
+            else
+                a[i][j] = 0;
+        }
+    }
+    for (i = 0; i < n; i++) {
+        if (a[i][i] == 0.0) {
+            printf("Error.\n");
+            return 0;
+        }
+
+        float diag = a[i][i];
+        for (j = 0; j < 2 * n; j++)
+            a[i][j] = a[i][j] / diag;
+
+        for (k = 0; k < n; k++) {
+            if (k != i) {
+                float ratio = a[k][i];
+                for (j = 0; j < 2 * n; j++)
+                    a[k][j] -= ratio * a[i][j];
+            }
+        }
+    }
+    printf("\nInverse of the matrix is:\n");
+    for (i = 0; i < n; i++) {
+        for (j = n; j < 2 * n; j++) {
+            printf("%8.3f ", a[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
