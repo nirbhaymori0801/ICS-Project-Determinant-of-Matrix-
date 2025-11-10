@@ -31,7 +31,29 @@ int det(int mat[100][100],int n){
   return det;
 }
 
-void inverse(int mat[100][100],int n);
+void inverse(int mat[100][100],int n){
+  int sign = 1;
+  int temp[100][100],x[100][100],inverse[100][100];
+  
+  for(int p=0;p<n;p++){
+    for(int q=0;q<n;q++){
+      cofactor(mat,temp,p,q,n);
+      x[p][q] = sign * det(temp,n-1) / det(mat,n);
+    }
+  }
+
+  for(int i=0;i<n;i++){
+    for(int j=0;j<n;j++){
+      inverse[j][i] = x[i][j];
+    }
+  }
+  for(int i=0;i<n;i++){
+    for(int j=0;j<n;j++){
+      printf("%d ",inverse[i][j]);
+    }
+    printf("\n");
+  }
+}
 
 int rank(int mat[100][100],int n);//complete the function here
 
@@ -60,7 +82,7 @@ int main(){
            break;
     case 2:
            printf("The inverse matrix of the above matrix is:\n");
-           //print the inverse matrix here...
+           inverse(mat,n);
            break;
     case 3:
            printf("The rank of the matrix is %d\n");
