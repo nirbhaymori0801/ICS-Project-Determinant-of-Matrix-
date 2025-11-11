@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 void cofactor(float mat[100][100], float temp[100][100], int p, int q, int n)
 {
     int i = 0, j = 0;
@@ -41,7 +42,7 @@ float detr(float mat[100][100], int n)
 
 void inverse(float mat[100][100], int n)
 {
-    int sign = 1;
+    int sign ;
     float temp[100][100], x[100][100], inverse[100][100];
     if (detr(mat, n) == 0)
     {
@@ -56,8 +57,9 @@ void inverse(float mat[100][100], int n)
             for (int q = 0; q < n; q++)
             {
                 cofactor(mat, temp, p, q, n);
+                sign = ((p + q) % 2 == 0) ? 1 : -1;
+
                 x[p][q] = sign * detr(temp, n - 1) / detr(mat, n);
-                sign *= (-1);
             }
         }
 
@@ -178,7 +180,7 @@ int main()
             }
             break;
         case 3:
-            printf("The rank of the matrix is %d\n\n\n",rank(mat, n));
+            printf("The rank of the matrix is %d\n\n\n", rank(mat, n));
             break;
         case 4:
             printf("Terminated\n");
